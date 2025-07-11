@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using san_juan.DTO;
 
 [Route("api/[controller]")]
 [ApiController]

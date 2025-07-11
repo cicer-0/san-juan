@@ -1,0 +1,26 @@
+services:
+  api:
+    image: "cicer/san-juan"
+    ports:
+      - "3000:8080"
+  mssql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest  # Puedes usar el tag correspondiente, como '2019-latest', '2022-preview', etc.
+    container_name: mssql-server
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password!  # Asegúrate de cambiar esta contraseña
+      - MSSQL_PID=Developer  # Opcional, puedes usar 'Express', 'Standard', 'Enterprise', 'EnterpriseCore'
+    ports:
+      - "1433:1433"  # Puerto por defecto de SQL Server
+    networks:
+      - sql_network
+    volumes:
+      - sql_data:/var/opt/mssql  # Esto persiste los datos de la base de datos
+
+networks:
+  sql_network:
+    driver: bridge
+
+volumes:
+  sql_data:
+    driver: local

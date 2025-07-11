@@ -8,7 +8,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll", policy =>
     {
         policy.AllowAnyOrigin()    // Permite solicitudes desde cualquier origen
-              .AllowAnyMethod()    // Permite cualquier método (GET, POST, etc.)
+              .AllowAnyMethod()    // Permite cualquier mï¿½todo (GET, POST, etc.)
               .AllowAnyHeader();   // Permite cualquier cabecera
     });
 });
@@ -25,16 +25,16 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+// }
 
 app.UseHttpsRedirection();
 
 
-// 3. Usar la política CORS
+// 3. Usar la polï¿½tica CORS
 app.UseCors("AllowAll");
 
 app.UseAuthorization();
